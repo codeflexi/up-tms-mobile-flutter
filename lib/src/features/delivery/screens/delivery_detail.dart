@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'dart:typed_data';
 import "package:flutter/material.dart";
@@ -13,9 +12,6 @@ import 'package:flutter_ws_1/src/features/pickup/bloc/shipment_bloc.dart';
 
 import 'package:flutter_ws_1/src/features/pickup/models/pickup_detail.dart';
 import 'package:flutter_ws_1/src/features/pickup/models/shipment.dart';
-
-
-
 
 class DeliveryDetailPage extends StatefulWidget {
   final String shipmentId;
@@ -42,9 +38,17 @@ class _DeliveryDetailPageState extends State<DeliveryDetailPage> {
   }
 
   void handleUpdatePicking(List<ShipmentDataModel> ships) async {
+    //loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: CircularProgressIndicator());
+      },
+    );
 
-    if (_selectedImage ==null || _selectSignature==null) {
+    if (_selectedImage == null || _selectSignature == null) {
       tShowDialog();
+
       return;
     }
     // print(shipArr.length);
@@ -54,13 +58,28 @@ class _DeliveryDetailPageState extends State<DeliveryDetailPage> {
     bool result = await DeliveryRepo.updateShipment(
         widget.shipmentId, _selectedImage!, _selectSignature!);
     if (result) {
-      shipmentsBloc.add(ClearPickupCartEvent());
-      Navigator.pop(context);
+     
+        Navigator.pop(context);
+
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => DeliveryListPage()));
 
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('บันทึกข้อมูลสำเร็จ')));
+       shipmentsBloc.add(ClearPickupCartEvent());
+     
+         ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+    content: Text('บันทึกข้อมูลสำเร็จ !!!'),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: Colors.green,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height - 100,
+        right: 20,
+        left: 20),
+  ));
+
+
     } else {
       tShowDialog();
       return;
@@ -78,6 +97,7 @@ class _DeliveryDetailPageState extends State<DeliveryDetailPage> {
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
+              Navigator.pop(context);
             },
             child: const Text('ตกลง'),
           ),
@@ -89,16 +109,14 @@ class _DeliveryDetailPageState extends State<DeliveryDetailPage> {
   void saveSignature(Uint8List img) {
     setState(() {
       _selectSignature = img;
-       isCompleted = true;
-       
+      isCompleted = true;
     });
-  
   }
 
   void saveImage(File img) {
     setState(() {
       _selectedImage = img;
-    currentStep = 1;
+      currentStep = 1;
     });
   }
 
@@ -187,19 +205,18 @@ class _DeliveryDetailPageState extends State<DeliveryDetailPage> {
                         color: Colors.blue,
                       ),
                     ),
-                   
-                   // Btt 
+
+                    // Btt
                     const SizedBox(height: 64),
                     Row(
                       children: [
                         Expanded(
                             child: OutlinedButton(
                           onPressed: () {
-                              setState(() {
-                                isCompleted = false;
-                                currentStep = 0;
-                              });
-                            
+                            setState(() {
+                              isCompleted = false;
+                              currentStep = 0;
+                            });
                           },
                           child: Text(tCancel.toUpperCase()),
                         )),

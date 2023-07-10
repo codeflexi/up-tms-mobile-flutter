@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_ws_1/src/comon_widgets/my_button.dart';
 import 'package:flutter_ws_1/src/comon_widgets/my_text_field_white.dart';
 import 'package:flutter_ws_1/src/configs/config.dart';
 import 'package:flutter_ws_1/src/constants/image_strings.dart';
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
 
                       
-                       Text(backendUrl,style: Theme.of(context).textTheme.bodyText1,),
+                      // Text(backendUrl,style: Theme.of(context).textTheme.bodyText1,),
                         Text(tAppVersion,style: Theme.of(context).textTheme.bodyText1,),
                       const SizedBox(
                         height: 20.0,
@@ -146,14 +147,15 @@ class _LoginPageState extends State<LoginPage> {
                                 const SizedBox(
                                   height: tFormHeight,
                                 ),
-                                ElevatedButton(
-                                    onPressed: () {
-                                      loginUser();
-                                    },
-                                    style: OutlinedButton.styleFrom(
-                                        minimumSize: const Size(200, 50)),
-                                    child: Text(tLogin.toUpperCase())),
-                                // sign in button
+                              MyButton(onTap: loginUser, bText: tLogin.toUpperCase())
+                                // ElevatedButton(
+                                //     onPressed: () {
+                                //       loginUser();
+                                //     },
+                                //     style: OutlinedButton.styleFrom(
+                                //         minimumSize: const Size(200, 50)),
+                                //     child: Text(tLogin.toUpperCase())),
+                                // // sign in button
                               ],
                             )),
                       ),

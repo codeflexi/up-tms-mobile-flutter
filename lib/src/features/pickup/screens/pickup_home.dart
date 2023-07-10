@@ -37,7 +37,7 @@ class PickupHomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Text(pickup.pick_number),
+              Text(pickup.pick_number,style: Theme.of(context).textTheme.headline6),
               Text(pickup.customer_name),
               Text(pickup.pick_momo),
               Text(pickup.pick_id),

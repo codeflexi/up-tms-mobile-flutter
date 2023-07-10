@@ -7,7 +7,12 @@ class ShipmentsInitialFetchEvent extends ShipmentEvent {
   final String pickId;
   final String fromPage;
   ShipmentsInitialFetchEvent({required this.pickId,required this.fromPage});
+}
 
+class ShipmentsInitialFetchByDriverEvent extends ShipmentEvent {
+  final String pickId;
+  final String fromPage;
+  ShipmentsInitialFetchByDriverEvent({required this.pickId,required this.fromPage});
 }
 
 

@@ -53,13 +53,13 @@ class MainMenuPage
     
                 MainMenuListTile(
           icon: Icons.local_shipping, 
-          text: 'P I C K U P',
+          text: 'N O R M A L - P I C K U P',
           onTab: onPickUpTap)
           ,
 
              MainMenuListTile(
-          icon: Icons.pin_drop,
-          text: 'D I R E C T - P I C K',
+          icon: Icons.transit_enterexit,
+          text: 'D I R E C T - P I C K U P',
           onTab: onDirectTap)
           ,
           

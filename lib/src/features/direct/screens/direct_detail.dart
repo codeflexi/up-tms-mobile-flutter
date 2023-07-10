@@ -45,10 +45,20 @@ class _DirectDetailPageState extends State<DirectDetailPage> {
 
   void handleUpdatePicking() async {
 
+
+     //loading circle
+   showDialog(
+    context: context,
+    builder: (context) {
+return Center(child: CircularProgressIndicator());
+    },
+   );
+
     if (_selectedImage ==null || _selectSignature==null) {
       tShowDialog();
       return;
     }
+
     // print(shipArr.length);
 
     //String shipments = result;
@@ -59,8 +69,23 @@ class _DirectDetailPageState extends State<DirectDetailPage> {
       Navigator.pop(context);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => DirectListPage()));
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('บันทึกข้อมูลสำเร็จ')));
+
+
+          ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+    content: Text('บันทึกข้อมูลสำเร็จ !!!'),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: Colors.green,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height - 100,
+        right: 20,
+        left: 20),
+  ));
+
+
+
     } else {
       tShowDialog();
       return;
@@ -78,6 +103,7 @@ class _DirectDetailPageState extends State<DirectDetailPage> {
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
+              Navigator.pop(context);
             },
             child: const Text('ตกลง'),
           ),

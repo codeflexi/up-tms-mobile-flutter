@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
+
 import 'package:flutter_ws_1/src/configs/config.dart';
 import 'package:flutter_ws_1/src/constants/global.dart';
 import 'package:flutter_ws_1/src/features/pickup/models/pickup.dart';
 import 'package:flutter_ws_1/src/features/pickup/models/shipment.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
+
 
 class PickupsRepo {
   static Future<List<PickupDataModel>> fetchPickup(String id) async {

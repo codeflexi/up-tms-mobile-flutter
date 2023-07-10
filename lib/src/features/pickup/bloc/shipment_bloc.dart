@@ -10,6 +10,7 @@ part 'shipment_state.dart';
 class ShipmentBloc extends Bloc<ShipmentEvent, ShipmentState> {
   ShipmentBloc() : super(ShipmentInitial()) {
     on<ShipmentsInitialFetchEvent>(shipmentsInitialFetchEvent);
+    on<ShipmentsInitialFetchByDriverEvent>(shipmentsInitialFetchByDriverEvent);
     on<PickupCartButtonNavigateEvent>(pickupCartButtonNavigateEvent);
     on<ShipmentPickupCartButtonClickedEvent>(
         shipmentPickupCartButtonClickedEvent);
@@ -58,4 +59,16 @@ class ShipmentBloc extends Bloc<ShipmentEvent, ShipmentState> {
   }
 
 
+
+  FutureOr<void> shipmentsInitialFetchByDriverEvent(ShipmentsInitialFetchByDriverEvent event, Emitter<ShipmentState> emit) async {
+    emit(ShipmentFetchingLoadingState());
+// Fect Shipment Data
+    List<ShipmentDataModel> shipments = await ShipmentsRepo.fetchShipmentByDriver(event.pickId,event.fromPage);
+
+    if (shipments != null) {
+      shipmentCards = shipments;
+    }
+    
+    emit(ShipmentFectchingSuccessfulState(shipments: shipmentCards));
+  }
 }

@@ -1,3 +1,7 @@
+import 'package:intl/intl.dart';
+
+//final formatter = DateFormat.yMd();
+final formatter = DateFormat('dd/MM/yyyy HH:MM');
 
 class LoadDataModel {
   final String load_id;
@@ -56,11 +60,16 @@ class LoadDataModel {
     //  if (json == null) {
     //   return;
     // }
+     String formattedDate(String date) {
+      DateTime dt = DateTime.parse(date);
+      return formatter.format(dt);
+    }
+
     return LoadDataModel(
       load_id: json['_id'],
       load_number: json['dispatch_number'] ?? '',
       load_momo: json['memo'] ?? '' ,
-    loading_date: json['planned_date'] ?? '',
+    loading_date: formattedDate(json['planned_date']) ?? '',
       driver_name: json['driver']['name'] ?? '',
       vehicle_plate_number:json['vehicle']['plate_number'] ?? '',
        vehicle_plate_province: json['vehicle']['plate_province']  ?? '',

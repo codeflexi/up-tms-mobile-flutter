@@ -5,7 +5,7 @@ class MyButton extends StatelessWidget {
   final Function()? onTap;
   final String bText;
 
-  const MyButton({super.key, required this.onTap,required this.bText});
+   MyButton({super.key, required this.onTap,required this.bText});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class MyButton extends StatelessWidget {
           color: Colors.black,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
+        child:  Center(
           child: Text(
-            tLogin,
+            bText,
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

@@ -25,11 +25,8 @@ class _ShipmentListPageState extends State<ShipmentListPage> {
   void initState() {
      //apiCall();
     super.initState();
-  shipmentsBloc.add(ShipmentsInitialFetchEvent(pickId: widget.pickId,fromPage: widget.fromPage));
-  //   // TODO: implement initState
-  //    WidgetsBinding.instance.addPostFrameCallback((_) {
-  //    Future.delayed(Duration(seconds: 3), () => bindingState());
-  //    });
+    shipmentsBloc.add(ShipmentsInitialFetchEvent(pickId: widget.pickId,fromPage: widget.fromPage));
+ 
    }
 
   //add shipment to pickup cart
@@ -52,8 +49,19 @@ class _ShipmentListPageState extends State<ShipmentListPage> {
         if (state is ShipmenPickupItemCartActionState) {
           // final  s = state as ShipmenPickupItemCartActionState;
           // pint(s.tosting());
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('Pickup Carted')));
+                  ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+    content: Text('Successfully Added to Cart'),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: Colors.green,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height - 100,
+        right: 20,
+        left: 20),
+  ));
+       
         }
         ;
       },
@@ -94,7 +102,8 @@ class _ShipmentListPageState extends State<ShipmentListPage> {
                       },
                     ))
                   ],
-                ));
+                ),
+                );
           default:
             return const SizedBox();
         }

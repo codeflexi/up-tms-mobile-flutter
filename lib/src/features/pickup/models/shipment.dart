@@ -1,5 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'package:intl/intl.dart';
+
+//final formatter = DateFormat.yMd();
+final formatter = DateFormat('dd/MM/yyyy HH:MM');
+
 
 class ShipmentDataModel {
   final String shipment_id;
@@ -12,6 +17,7 @@ class ShipmentDataModel {
    final String shipment_content;
    final String shipment_cod;
    final String shipment_iscod;
+  //  final String? dispatching_date;
   // final Map<String,Object> address;
   // final Map<String,Object> cod;
 
@@ -26,17 +32,24 @@ class ShipmentDataModel {
     required this.shipment_content,
     required this.shipment_cod,
     required this.shipment_iscod,
+    // this.dispatching_date,
   });
 
   factory ShipmentDataModel.fromJson(Map<String, dynamic> json) {
     //  if (json == null) {
     //   return;
     // }
+      String formattedDate(String date) {
+      DateTime dt = DateTime.parse(date);
+      return formatter.format(dt);
+    }
+
        return ShipmentDataModel(
         shipment_id: json['_id'] ?? '',
         waybill_number: json['waybill_number'] ?? '',
         shipment_number: json['shipment_number'] ?? '',
-        shop_name: json['company']['name'] ?? '',
+       // shop_name: json['company']['name'] ?? '',
+        shop_name: 'UP ECOM',
         customer_name: json['shipping_full_name'] ?? '',
         customer_address: json['shipping_address_line1'] ?? '' +
         json['shipping_address_line2'] ?? '',
@@ -44,6 +57,8 @@ class ShipmentDataModel {
         shipment_content: json['content_items'].toString(),
          shipment_iscod: json['cargo_info']['iscod']?? 'N',
        shipment_cod: json['cargo_info']['cod_amount'].toString()?? '0',
+      //  dispatching_date: formattedDate(json['dispatching_date']),
+
         );
   }
 }

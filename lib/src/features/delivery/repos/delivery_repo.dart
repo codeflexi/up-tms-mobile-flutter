@@ -14,8 +14,8 @@ static Future<List<ShipmentDataModel>> fetchShipment(String id) async {
     var client = http.Client();
     // List listResponse = [];
     List<ShipmentDataModel> shipments = [];
+    //sort=dispatching_date&
     //  String id = Global.storageService.getUserProfileKey();
-   
       String uri = '/api/v1/shipments?status=OUT FOR DELIVERY&driver=$id';
     try {
       var response = await client.get(Uri.parse(backendUrl + uri));

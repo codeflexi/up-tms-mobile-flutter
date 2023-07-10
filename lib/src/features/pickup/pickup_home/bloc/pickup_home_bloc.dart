@@ -18,11 +18,11 @@ class PickupHomeBloc extends Bloc<PickupHomeEvent, PickupHomeState> {
   FutureOr<void> pickupInitialFetchEvent(PickupInitialFetchEvent event, Emitter<PickupHomeState> emit) async {
    emit(PickupFetchingLoadingState());
 
-// Fect Shipment Data
+// Fetch Shipment Data
   String id = Global.storageService.getUserProfileKey();
+  
   List<PickupDataModel> pickuplists = await PickupsRepo.fetchPickup(id);
-
- emit(PickupFectchingSuccessfulState(pickups: pickuplists));
+  emit(PickupFectchingSuccessfulState(pickups: pickuplists));
 
   }
 

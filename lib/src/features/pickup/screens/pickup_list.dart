@@ -64,7 +64,8 @@ class _PickupListState extends State<PickupList> {
               appBar: AppBar(
                 centerTitle: true,
                 elevation: 0,
-                title: const Text("P I C K  U P"),
+                title: const Text("N O R M A L - P I C K U P"),
+                  backgroundColor: Colors.grey[900],
               leading:IconButton(
             icon: Icon(Icons.home),
               onPressed: (){

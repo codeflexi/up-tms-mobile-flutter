@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ws_1/soiver.dart';
+import 'package:flutter_ws_1/src/features/auth/home/home_landing_page.dart';
 import 'package:flutter_ws_1/src/features/auth/login/screens/login_page.dart';
 
 //import 'package:flutter_ws_1/src/features/login/screens/login.dart';
@@ -20,9 +22,10 @@ SharedPreferences prefs = await SharedPreferences.getInstance();
 
 class Homestlclass extends StatelessWidget {
   final token;
+  
+   Homestlclass({required this.token,super.key});
 
-  const Homestlclass({required this.token,super.key});
-
+   String isToken = Global.storageService.getUserToken();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,7 +35,9 @@ class Homestlclass extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.light,
       //home : PickupAction(),
-      home: LoginPage(),
+      //home: LoginPage(),
+       home: isToken ==''? LoginPage():HomeLandingPage(),
+     // home: SliverPage(),
        //home: PostsPage(token: token),
         //body: (JwtDecoder.isExpired(token) == false)?PostsPage(token: token):LoginPage(),
         //body: (JwtDecoder.isExpired(token) == false)?LoginPage():LoginPage(),

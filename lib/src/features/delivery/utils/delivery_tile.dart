@@ -80,6 +80,7 @@ class DeliveryTile extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                 
                     const Icon(
                       Icons.person_pin_circle,
                       color: Colors.red,

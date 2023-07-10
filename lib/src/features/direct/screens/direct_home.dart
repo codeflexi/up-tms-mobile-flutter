@@ -39,7 +39,7 @@ class DirectHomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Text(shipment.waybill_number),
+              Text(shipment.waybill_number,style: Theme.of(context).textTheme.headline6),
               Text(shipment.customer_name),
               Text(shipment.shipment_number),
               Text(shipment.shipment_id),

@@ -1,3 +1,7 @@
+import 'package:intl/intl.dart';
+
+//final formatter = DateFormat.yMd();
+final formatter = DateFormat('dd/MM/yyyy HH:MM');
 
 class PickupDataModel {
   final String pick_id;
@@ -13,13 +17,11 @@ class PickupDataModel {
   final String customer_phone;
   final String customer_route;
   //final String shipment_count;
- 
+
   final String warehouse_name;
   final String warehouse_address;
   final String warehouse_phone;
   final String warehouse_route;
-
-
 
   // final String shipment_cod;
   // final Map<String,Object> address;
@@ -38,13 +40,11 @@ class PickupDataModel {
     required this.customer_address,
     required this.customer_phone,
     required this.customer_route,
-   //required this.shipment_count,
+    //required this.shipment_count,
     required this.warehouse_name,
     required this.warehouse_address,
     required this.warehouse_phone,
     required this.warehouse_route,
-   
-   
   });
 
 // String _convertDateTime (json) {
@@ -56,29 +56,34 @@ class PickupDataModel {
     //  if (json == null) {
     //   return;
     // }
+    String formattedDate(String date) {
+      DateTime dt = DateTime.parse(date);
+      return formatter.format(dt);
+    }
+
     return PickupDataModel(
       pick_id: json['_id'],
       pick_number: json['pick_number'] ?? '',
-      pick_momo: json['memo'] ?? '' ,
-    picking_date: json['planned_date'] ?? '',
+      pick_momo: json['memo'] ?? '',
+      picking_date: formattedDate(json['planned_date']),
       driver_name: json['driver']['name'] ?? '',
-      vehicle_plate_number:json['vehicle']['plate_number'] ?? '',
-       vehicle_plate_province: json['vehicle']['plate_province']  ?? '',
+      vehicle_plate_number: json['vehicle']['plate_number'] ?? '',
+      vehicle_plate_province: json['vehicle']['plate_province'] ?? '',
       vehicle_type: json['vehicle']['type'] ?? '',
       //shipment_count : json['shipment_ids'].length.toString(),
-      customer_name:json['company']['name'] ?? '',
+      customer_name: json['company']['name'] ?? '',
       customer_address: json['company']['address_line1'] ?? '',
       customer_phone: json['company']['phone'] ?? '',
-      customer_route:
-          json['company']['city'] ?? ''  + ',' + json['company']??['state'] ?? '',
-      warehouse_name:
-          json['warehouse']['name'] ?? '',
-        warehouse_address:
-          json['warehouse']['address_line1'] ?? '',
-        warehouse_phone:
-          json['warehouse']['phone'] ?? '',
-        warehouse_route:
-         json['warehouse']['city'] ?? ''  + ',' + json['warehouse']['state'] ?? '',
+      customer_route: json['company']['city'] ??
+          '' + ',' + json['company'] ??
+          ['state'] ??
+          '',
+      warehouse_name: json['warehouse']['name'] ?? '',
+      warehouse_address: json['warehouse']['address_line1'] ?? '',
+      warehouse_phone: json['warehouse']['phone'] ?? '',
+      warehouse_route: json['warehouse']['city'] ??
+          '' + ',' + json['warehouse']['state'] ??
+          '',
     );
   }
 }

@@ -16,7 +16,8 @@ static Future<List<ShipmentsDataModel>> fetchShipment(String id) async {
     List<ShipmentsDataModel> shipments = [];
     //  String id = Global.storageService.getUserProfileKey();
    
-      String uri = '/api/v1/shipments?is_by_pass=Y&status=PICKING UP&driver=$id';
+   //&sort=-planned_date&
+      String uri = '/api/v1/shipments?is_by_pass=Y&sort=picking_date&status=PICKING UP&driver=$id';
     try {
       var response = await client.get(Uri.parse(backendUrl + uri));
 

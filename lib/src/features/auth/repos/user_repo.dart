@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter_ws_1/src/common/models/users_data_model.dart';
 import 'package:flutter_ws_1/src/configs/config.dart';
 import 'package:flutter_ws_1/src/constants/parameter.dart';
 import 'package:http/http.dart' as http;
@@ -100,5 +101,63 @@ class UserRepo {
       //log(e.toString());
     }
     return returnResult;
+  }
+
+  // UseresDataModel({
+  //   required this.user_id,
+  //   required this.user_email,
+  //   required this.user_name,
+  //   this.user_lastname,
+  //   this.user_avatar,
+  //   required this.user_role,
+
+  static Future<List<String>> fetchUserProfile(String id) async {
+    var client = http.Client();
+    // List listResponse = [];
+   
+    
+    String uri = '/api/v1/users/$id';
+
+  String token = Global.storageService.getUserToken();
+
+    try {
+        var response = await http.get(Uri.parse(backendUrl + uri), headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      });
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        // event --> block --> state
+        var jsonResponse = jsonDecode(response.body);
+
+        // result = jsonResponse['data'];
+ var result = jsonResponse['data'];
+
+          var user_id = result['_id'];
+          var user_email = result['email'] ;
+          var user_name = result['name'] ??'';
+           var user_lastname = result['last_name'] ?? '' ;
+          var user_role = result['role'] ?? '' ;
+
+          List<String> listUser = [user_id,user_email,user_name,user_lastname,user_role];
+          return listUser;
+        
+         
+
+        // for (int i = 0; i < result.length; i++) {
+        //   UseresDataModel user =
+        //       UseresDataModel.fromJson(result[i] as Map<String, dynamic>);
+        //   users.add(user);
+        // }
+      } else {
+        return [];
+      }
+    } catch (e) {
+      return [];
+      //throw Exception(response.reasonPhrase);
+      //log(e.toString());
+    }
+   
   }
 }

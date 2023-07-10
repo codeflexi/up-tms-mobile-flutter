@@ -45,4 +45,6 @@ class _BarcodeScannerState extends State<BarcodeScanner> {
       getResult = 'Failed to scan QR Code';
     }
   }
+
+  
 }

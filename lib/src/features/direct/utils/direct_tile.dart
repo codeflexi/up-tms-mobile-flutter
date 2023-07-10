@@ -26,7 +26,7 @@ class DirectTile extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width * 0.90,
       decoration: BoxDecoration(
-          color: Colors.red.shade100,
+          color: Colors.brown.shade100,
           borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -81,7 +81,10 @@ class DirectTile extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
+Center(
+  child:   Text('กำหนดรับ' + ':' + shipment.picking_date.toString(),
+                          style: Theme.of(context).textTheme.headline6),
+),
                     Row(
                       children: [
                         const Icon(

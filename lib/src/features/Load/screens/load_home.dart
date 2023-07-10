@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ws_1/src/features/Load/models/load_data_model.dart';
 import 'package:flutter_ws_1/src/features/Load/screens/load_detail.dart';
 import 'package:flutter_ws_1/src/features/pickup/bloc/shipment_bloc.dart';
-import 'package:flutter_ws_1/src/features/pickup/models/pickup.dart';
 import 'package:flutter_ws_1/src/features/pickup/screens/pickup_action.dart';
-import 'package:flutter_ws_1/src/features/pickup/screens/pickup_detail.dart';
 
 class LoadHomePage extends StatelessWidget {
   LoadHomePage({super.key});
@@ -39,7 +37,7 @@ class LoadHomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Text(load.load_number),
+              Text(load.load_number,style: Theme.of(context).textTheme.headline6),
               Text(load.customer_name),
               Text(load.load_momo),
               Text(load.load_id),
@@ -75,6 +73,8 @@ class LoadHomePage extends StatelessWidget {
                     PickupAction(pickId: load.load_id,formPage: 'load',),
                     //2nd Tab
                     LoadDetailPage(pickId: load.load_id),
+
+                   
 
                     //3th Tab
                   ],

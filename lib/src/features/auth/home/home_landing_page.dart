@@ -9,7 +9,7 @@ import 'package:flutter_ws_1/src/features/direct/screens/direct_list.dart';
 import 'package:flutter_ws_1/src/features/menu/main_menu_page.dart';
 import 'package:flutter_ws_1/src/features/pickup/screens/pickup_list.dart';
 
-import '../../user/screens/profile_page.dart';
+import '../profile/screens/profile_page.dart';
 
 class HomeLandingPage extends StatefulWidget {
   const HomeLandingPage({super.key});
@@ -23,7 +23,7 @@ class _HomeLandingPageState extends State<HomeLandingPage> {
   // pages
  List<Widget> _pages = [
   //ShipmentListPage
-  ProfilePage(),
+  UserProfilePage(),
   
   PickupList(), 
 ];
@@ -33,35 +33,35 @@ class _HomeLandingPageState extends State<HomeLandingPage> {
     Navigator.pop(context);
 
     Navigator.push(context, MaterialPageRoute(
-      builder:(context)=> ProfilePage(), ),);
+      builder:(context)=> const UserProfilePage(), ),);
   }
 
    void goToPickupPage() {
     Navigator.pop(context);
 
     Navigator.push(context, MaterialPageRoute(
-      builder:(context)=> PickupList(), ),);
+      builder:(context)=>const PickupList(), ),);
   }
 
     void goToLoadPage() {
     Navigator.pop(context);
 
     Navigator.push(context, MaterialPageRoute(
-      builder:(context)=> LoadListPage(), ),);
+      builder:(context)=>const LoadListPage(), ),);
   }
 
  void goToDeliveryPage() {
     Navigator.pop(context);
 
     Navigator.push(context, MaterialPageRoute(
-      builder:(context)=> DeliveryListPage(), ),);
+      builder:(context)=> const DeliveryListPage(), ),);
   }
 
    void goToDirectPage() {
     Navigator.pop(context);
 
     Navigator.push(context, MaterialPageRoute(
-      builder:(context)=> DirectListPage(), ),);
+      builder:(context)=> const DirectListPage(), ),);
   }
 
 
@@ -116,6 +116,7 @@ class _HomeLandingPageState extends State<HomeLandingPage> {
                 centerTitle: true,
                 elevation: 0,
                 title: const Text("H O M E"),
+                  backgroundColor: Colors.grey[900],
               
               ),
         drawer: MainMenuPage(

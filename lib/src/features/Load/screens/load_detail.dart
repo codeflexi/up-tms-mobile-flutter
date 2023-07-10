@@ -47,6 +47,14 @@ class _LoadDetailPageState extends State<LoadDetailPage> {
     //  List<ShipmentDataModel> shipments = [];
     List data = ships;
 
+     //loading circle
+   showDialog(
+    context: context,
+    builder: (context) {
+return Center(child: CircularProgressIndicator());
+    },
+   );
+
 // Loop and create Array
     List<String> shipArr = [];
     var shipments = ships.map((ship) {
@@ -74,8 +82,20 @@ class _LoadDetailPageState extends State<LoadDetailPage> {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => LoadListPage()));
 
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('บันทึกข้อมูลสำเร็จ')));
+           ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+    content: Text('บันทึกข้อมูลสำเร็จ !!!'),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: Colors.green,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height - 100,
+        right: 20,
+        left: 20),
+  ));
+
+
     } else {
       tShowDialog();
       return;
@@ -93,6 +113,7 @@ class _LoadDetailPageState extends State<LoadDetailPage> {
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
+              Navigator.pop(context);
             },
             child: const Text('ตกลง'),
           ),

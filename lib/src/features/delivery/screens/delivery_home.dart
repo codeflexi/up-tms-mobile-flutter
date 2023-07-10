@@ -41,10 +41,38 @@ class DeliveryHomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Text(shipment.waybill_number),
+              Text(shipment.waybill_number,style: Theme.of(context).textTheme.headline6),
               Text(shipment.customer_name),
               Text(shipment.shipment_number),
               Text(shipment.shipment_id),
+
+  shipment.shipment_iscod == 'Y'
+                ? Container(
+                    decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.circular(5)),
+                    margin: const EdgeInsets.only(bottom: 2, top: 2),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.currency_bitcoin,
+                          color: Colors.red,
+                          size: 20,
+                        ),
+                        Text(
+                            'เก็บเงินปลายทาง จำนวน : ' +
+                                shipment.shipment_cod +
+                                ' บาท',
+                            style: Theme.of(context).textTheme.headline6),
+                      ],
+                    ),
+                  )
+                : SizedBox(),
+
             const SizedBox(
                 height: 10,
               ),

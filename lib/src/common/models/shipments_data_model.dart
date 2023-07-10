@@ -1,5 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'package:intl/intl.dart';
+
+
+//final formatter = DateFormat.yMd();
+final formatter = DateFormat('dd/MM/yyyy HH:MM');
+
 
 class ShipmentsDataModel {
   final String shipment_id;
@@ -15,6 +21,7 @@ class ShipmentsDataModel {
    final String shipment_content;
    final String shipment_cod;
    final String shipment_iscod;
+   final String? picking_date;
   // final Map<String,Object> address;
   // final Map<String,Object> cod;
 
@@ -32,12 +39,20 @@ class ShipmentsDataModel {
     required this.shipment_content,
     required this.shipment_cod,
     required this.shipment_iscod,
+    this.picking_date
   });
 
   factory ShipmentsDataModel.fromJson(Map<String, dynamic> json) {
     //  if (json == null) {
     //   return;
     // }
+
+   String formattedDate(String date) {
+      DateTime dt = DateTime.parse(date);
+      return formatter.format(dt);
+    }
+
+
        return ShipmentsDataModel(
         shipment_id: json['_id'] ?? '',
         waybill_number: json['waybill_number'] ?? '',
@@ -54,6 +69,7 @@ class ShipmentsDataModel {
         shipment_content: json['content_items'].toString(),
         shipment_iscod: json['cargo_info']['iscod']?? 'N',
         shipment_cod: json['cargo_info']['cod_amount'].toString()?? '0',
+       picking_date: formattedDate(json['picking_date']) ?? '',
         );
   }
 }

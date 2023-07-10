@@ -49,6 +49,7 @@ class _DirectListPageState extends State<DirectListPage> {
                 centerTitle: true,
                 elevation: 0,
                 title: const Text("D I R E C T - P I C K U P"),
+                  backgroundColor: Colors.grey[900],
               leading:IconButton(
             icon: Icon(Icons.home),
               onPressed: (){

@@ -3,6 +3,7 @@ import 'package:flutter_ws_1/src/constants/colors.dart';
 import 'package:flutter_ws_1/src/features/pickup/screens/shipment_cart.dart';
 import 'package:flutter_ws_1/src/features/pickup/screens/shipment_list.dart';
 import 'package:flutter_ws_1/src/features/pickup/utils/bottom_nav_bar.dart';
+import 'package:flutter_ws_1/src/features/tracking/screens/qr_scan_page.dart';
 
 class PickupAction extends StatefulWidget {
   const PickupAction({super.key,required this.pickId , required this.formPage });
@@ -31,7 +32,11 @@ late List<Widget> _pages = [
   //ShipmentListPage
   ShipmentListPage(pickId: widget.pickId , fromPage: widget.formPage,),
 
+  QrScanPage(pickId: widget.pickId , fromPage: widget.formPage,),
+
   ShipmentCart(), 
+
+
 ];
 
   @override
