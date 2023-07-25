@@ -13,6 +13,9 @@ class ShipmentDataModel {
   final String shop_name;
    final String customer_name;
    final String customer_address;
+   final String? customer_city;
+   final String? customer_state;
+   final String? customer_zipcode;
    final String customer_phone;
    final String shipment_content;
    final String shipment_cod;
@@ -28,6 +31,9 @@ class ShipmentDataModel {
     required this.shop_name,
     required this.customer_name,
     required this.customer_address,
+    this.customer_city,
+    this.customer_state,
+    this.customer_zipcode,
     required this.customer_phone,
     required this.shipment_content,
     required this.shipment_cod,
@@ -49,11 +55,14 @@ class ShipmentDataModel {
         waybill_number: json['waybill_number'] ?? '',
         shipment_number: json['shipment_number'] ?? '',
        // shop_name: json['company']['name'] ?? '',
-        shop_name: 'UP ECOM',
+        shop_name: json['company']['name'] ?? '',
         customer_name: json['shipping_full_name'] ?? '',
         customer_address: json['shipping_address_line1'] ?? '' +
         json['shipping_address_line2'] ?? '',
         customer_phone: json['phone'] ?? '',
+        customer_city: json['city'] ?? '',
+        customer_state: json['state'] ?? '',
+        customer_zipcode: json['zipcode'] ?? '',
         shipment_content: json['content_items'].toString(),
          shipment_iscod: json['cargo_info']['iscod']?? 'N',
        shipment_cod: json['cargo_info']['cod_amount'].toString()?? '0',

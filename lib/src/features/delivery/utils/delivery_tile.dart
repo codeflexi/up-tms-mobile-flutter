@@ -88,6 +88,8 @@ class DeliveryTile extends StatelessWidget {
                     ),
                     Text(shipment.customer_address.toString(),
                         style: Theme.of(context).textTheme.headline6),
+                          Text(shipment.customer_city.toString() + ',' +shipment.customer_state.toString() + ' ' + shipment.customer_zipcode.toString(),
+                        style: Theme.of(context).textTheme.headline6),
                     Text(shipment.shipment_number.toString() +
                         ' : ' +
                         shipment.shipment_content.toString()),

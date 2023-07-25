@@ -14,6 +14,9 @@ class ShipmentsDataModel {
   final String shop_name;
    final String customer_name;
    final String customer_address;
+   final String? customer_city;
+   final String? customer_state;
+    final String? customer_zipcode;
    final String customer_phone;
     final String warehouse_name;
    final String warehouse_address;
@@ -32,6 +35,9 @@ class ShipmentsDataModel {
     required this.shop_name,
     required this.customer_name,
     required this.customer_address,
+    this.customer_city,
+    this.customer_state,
+    this.customer_zipcode,
     required this.customer_phone,
     required this.warehouse_name,
     required this.warehouse_address,
@@ -65,6 +71,9 @@ class ShipmentsDataModel {
         customer_name: json['shipping_full_name'] ?? '',
         customer_address: json['shipping_address_line1'] ?? '' +
         json['shipping_address_line2'] ?? '',
+        customer_city: json['city'] ?? '',
+        customer_state: json['state'] ?? '',
+        customer_zipcode: json['zipcode'] ?? '',
         customer_phone: json['phone'] ?? '',
         shipment_content: json['content_items'].toString(),
         shipment_iscod: json['cargo_info']['iscod']?? 'N',
