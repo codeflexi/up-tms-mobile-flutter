@@ -229,7 +229,7 @@ class _UnDeliveryPageState extends State<UnDeliveryPage> {
                             value: 'Not-Home',
                             groupValue: _undelReason,
                             dense: true,
-                            title: Text('Not Home (ลูกค้า ไม่อยู่บ้าน) ',
+                            title: Text('Not Home (ลูกค้า ไม่อยู่บ้าน/ติดต่อไม่ได้) ',
                                 style: Theme.of(context).textTheme.bodyText1),
                             onChanged: (val) {
                               setState(() {
@@ -243,7 +243,7 @@ class _UnDeliveryPageState extends State<UnDeliveryPage> {
                             value: 'Re-Schedule',
                             dense: true,
                             groupValue: _undelReason,
-                            title: Text('Re-Schedule (ลูกค้า เลื่อนรับ) ',
+                            title: Text('Re-Schedule (ลูกค้า เลื่อนวันรับ) ',
                                 style: Theme.of(context).textTheme.bodyText1),
                             onChanged: (val) {
                               setState(() {
@@ -257,12 +257,40 @@ class _UnDeliveryPageState extends State<UnDeliveryPage> {
                             value: 'Re-Fused',
                             dense: true,
                             groupValue: _undelReason,
-                            title: Text('Refused (ลูกค้า ยกเลิก) ',
+                            title: Text('Refused (ลูกค้า ยกเลิก/ปฏิเสธการรับ) ',
                                 style: Theme.of(context).textTheme.bodyText1),
                             onChanged: (val) {
                               setState(() {
                                 _undelReason = val.toString();
                                 print(_undelReason);
+                              });
+                            },
+                          ),
+                          RadioListTile(
+                            contentPadding: EdgeInsets.all(2.0),
+                            value: 'Change-Address',
+                            groupValue: _undelReason,
+                            dense: true,
+                            title: Text('Change Addr (แจ้งเปลี่ยนที่อยู่จัดส่ง) ',
+                                style: Theme.of(context).textTheme.bodyText1),
+                            onChanged: (val) {
+                              setState(() {
+                                _undelReason = val.toString();
+                                 print(_undelReason);
+                              });
+                            },
+                          ),
+                              RadioListTile(
+                            contentPadding: EdgeInsets.all(2.0),
+                            value: 'Brand-Cancel',
+                            groupValue: _undelReason,
+                            dense: true,
+                            title: Text('Brand Cancel (แบรนด์แจ้งยกเลิกออเดอร์) ',
+                                style: Theme.of(context).textTheme.bodyText1),
+                            onChanged: (val) {
+                              setState(() {
+                                _undelReason = val.toString();
+                                 print(_undelReason);
                               });
                             },
                           ),

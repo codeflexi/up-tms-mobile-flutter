@@ -1,5 +1,5 @@
 /* -- App Text Strings -- */
-const String tAppVersion = "V1.0.0";
+const String tAppVersion = "V1.1.0";
 // -- GLOBAL Texts
 const String tNext = "Next";
 const String tLogin = "Login";

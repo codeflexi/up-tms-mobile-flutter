@@ -71,7 +71,7 @@ class _HomeLandingPageState extends State<HomeLandingPage> {
 
     bool result = false;
     print(result);
-    tShowDialog();
+   // tShowDialog();
     
       result = await UserRepo.userLogout();
       if (result) {
